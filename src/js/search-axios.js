@@ -111,7 +111,8 @@ function renderPhoto(photos) {
   
   const photosArray = photos.hits;
   if (photos.total === 0) {
-   Notiflix.Notify.failure("Sorry, there are no images matching your search query. Please try again.")
+      Notiflix.Notify.failure("Sorry, there are no images matching your search query. Please try again.")
+      return;
   } else {
    
      const markup = photosArray.map((photo) => {
