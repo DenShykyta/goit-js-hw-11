@@ -1,2 +1,1 @@
-import './js/search'
-// import './js/pokemon'
+import './js/search-axios'

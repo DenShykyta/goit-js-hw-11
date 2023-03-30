@@ -1,4 +1,6 @@
+import axios from 'axios';
 import Notiflix from 'notiflix';
+
 
 const API_KEY = '34649467-390de1e028ed8d04cb8586617';
 const BASE_URL = 'https://pixabay.com/api';
@@ -47,9 +49,31 @@ function onLoadMore() {
 
 }
     
-function fetchPhoto(searchQuery) {
+// function fetchPhoto(searchQuery) {
 
-  const params = new URLSearchParams({
+//   const params = new URLSearchParams({
+//     key: API_KEY,
+//     q: searchQuery,
+//     image_type: 'photo',
+//     orientation: 'horizontal',
+//     safesearch: true,
+//     per_page,
+//     page,
+//   });
+  
+//   return fetch(`${BASE_URL}/?${params}`)
+//     .then(response => {
+//       if (!response.ok) {
+//         throw new Error(response.status);
+//       }
+//       return response.json();
+       
+//     });
+// }
+
+const fetchPhoto = async () => {
+    try {
+    const params = new URLSearchParams({
     key: API_KEY,
     q: searchQuery,
     image_type: 'photo',
@@ -57,16 +81,13 @@ function fetchPhoto(searchQuery) {
     safesearch: true,
     per_page,
     page,
-  });
-  
-  return fetch(`${BASE_URL}/?${params}`)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(response.status);
-      }
-      return response.json();
-       
-    });
+     });
+    const response = await fetch(`${BASE_URL}/?${params}`);
+    const data = await response.json();
+    return data;
+    } catch (error) {
+        console.log(console.log(error));
+    }
 }
 
 function renderPhoto(photos) {
