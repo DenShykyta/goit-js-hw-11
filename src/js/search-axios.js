@@ -15,7 +15,7 @@ let per_page = 40;
 let page = 1;
 let searchQuery = '';
 
-refs.loadMoreBtn.style.display = 'none';
+// refs.loadMoreBtn.style.display = 'none';
 refs.searchForm.addEventListener('submit', onSearch);
 refs.loadMoreBtn.addEventListener('click', onLoadMore);
 
