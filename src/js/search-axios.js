@@ -26,7 +26,8 @@ function onSearch(e) {
   if (searchQuery === '') {
     return;
   }
-refs.gallery.innerHTML = '';
+  refs.gallery.innerHTML = '';
+  refs.loadMoreBtn.style.display = 'none'
     page = 1;
   fetchPhoto(searchQuery).then(data => {
     renderPhoto(data);
@@ -136,7 +137,6 @@ return `<div class="photo-card">
   }).join("");
 
     refs.gallery.insertAdjacentHTML('beforeend', markup);
-  
     refs.loadMoreBtn.style.display = 'block';
   }
 }
